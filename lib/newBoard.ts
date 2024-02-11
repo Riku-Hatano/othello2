@@ -1,4 +1,9 @@
 const newBoard = (col: number, row: number, board: any) => {
+  console.log({
+    //正しい挙動
+    col: col,
+    row: row,
+  });
   //石を置けるかどうかの判定
   let changeCell: any[] = [];
   let forChangeCell: any[] = [];
@@ -7,8 +12,8 @@ const newBoard = (col: number, row: number, board: any) => {
   let stringed: string;
   if (board.isWhiteTurn) {
     //下がひっくり返るか
-    for (let i = row; i < 8; i++) {
-      forChangeCell.push(board.board[i][col]);
+    for (let i = col; i < 8; i++) {
+      forChangeCell.push(board.board[i][row]);
     }
     stringed = forChangeCell.join("");
     if (
@@ -18,14 +23,15 @@ const newBoard = (col: number, row: number, board: any) => {
       stringed.indexOf("B ") > stringed.indexOf("W")
     ) {
       for (let i = 1; i < stringed.indexOf("BW") + 1; i++) {
-        changeCell.push(row + i + " " + col);
+        changeCell.push(col + i + " " + row); //後で順番変える
       }
     }
     forChangeCell = [];
     //右がひっくり返るか
-    for (let i = col; i < 8; i++) {
-      forChangeCell.push(board.board[row][i]);
+    for (let i = row; i < 8; i++) {
+      forChangeCell.push(board.board[col][i]);
     }
+    console.log(forChangeCell);
     stringed = forChangeCell.join("");
     if (
       (stringed.indexOf("BW") !== -1 &&
@@ -323,6 +329,8 @@ const newBoard = (col: number, row: number, board: any) => {
   }
 
   //実際にマスを反転させる処理。changeCellに反転させるマスの番地が入っている。
+  console.log(changeCell);
+
   if (changeCell.length === 0) {
     return;
   }
@@ -331,12 +339,12 @@ const newBoard = (col: number, row: number, board: any) => {
     for (let i = 0; i < changeCell.length; i++) {
       newSquares[changeCell[i][0]][changeCell[i][2]] = "W";
     }
-    newSquares[row][col] = "W";
+    newSquares[col][row] = "W";
   } else {
     for (let i = 0; i < changeCell.length; i++) {
-      newSquares[changeCell[i][0]][changeCell[i][2]] = "B";
+      newSquares[changeCell[i][2]][changeCell[i][0]] = "B";
     }
-    newSquares[row][col] = "B";
+    newSquares[col][row] = "B";
   }
   const history = board.boardHistory.slice();
   history.push(newSquares);

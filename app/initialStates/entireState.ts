@@ -21,7 +21,7 @@ interface Game {
 
 type Board = Cell[][];
 
-export type Cell = "white" | "black" | null;
+export type Cell = "W" | "B" | null | " ";
 
 interface PlayLog {
   log: any;
