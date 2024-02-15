@@ -323,7 +323,8 @@ const newBoard = (col: number, row: number, board: any) => {
 
   //実際にマスを反転させる処理。changeCellに反転させるマスの番地が入っている。
   if (changeCell.length === 0) {
-    return;
+    console.log("nothing chenged");
+    return board.board;
   }
   const newSquares = JSON.parse(JSON.stringify(board.board));
   if (board.isWhiteTurn) {
@@ -341,7 +342,6 @@ const newBoard = (col: number, row: number, board: any) => {
   const history = board.boardHistory.slice();
   history.push(newSquares);
 
-  console.log(newSquares);
   changeCell = [];
   return newSquares;
 };
