@@ -5,9 +5,16 @@ const HandleChange = (col: number, row: number, board: any): any => {
   switch (board.mode) {
     case "PLAY":
       if (board.board[col][row] !== " ") {
-        return board.board;
+        return {
+          flag: false,
+          board: board.board,
+        };
       }
-      return newBoard(col, row, board);
+      const newVal = newBoard(col, row, board);
+      return {
+        flag: newVal.flag,
+        board: newVal.board,
+      };
     case "EDIT_WHITE":
       return EditBoard(col, row, board);
     case "EDIT_BLACK":
