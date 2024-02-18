@@ -3,12 +3,7 @@
 import { Grid } from "@mui/material";
 import HandleChange from "@/lib/handleChange";
 import { useDispatch } from "react-redux";
-import {
-  putWhite,
-  putBlack,
-  changeTurn,
-  updateBoard,
-} from "@/redux/boardSlice";
+import { changeTurn, updateBoard } from "@/redux/boardSlice";
 
 const cellSize = {
   xs: "30px",
