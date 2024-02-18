@@ -1,5 +1,3 @@
-import { Cell } from "./entireState";
-
 const boardInitializer = (isClear = false): any[][] => {
   // const boardInitializer = (isClear = false): Cell[][] => {
   // const rowSize = 8;

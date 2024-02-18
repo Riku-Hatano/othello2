@@ -12,20 +12,10 @@ export const boardSlice = createSlice({
     board: initialBoard,
     boardHistory: [initialBoard],
     isWhiteTurn: true,
-    value: 0,
     amount: 0,
     mode: "PLAY",
   },
   reducers: {
-    increment: (state) => {
-      state.value++;
-    },
-    decrement: (state) => {
-      state.value--;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += parseInt(action.payload);
-    },
     putWhite: (state) => {
       state.mode = "EDIT_WHITE";
     },
@@ -45,14 +35,6 @@ export const boardSlice = createSlice({
   },
 });
 
-export const {
-  increment,
-  decrement,
-  incrementByAmount,
-  putWhite,
-  putBlack,
-  play,
-  changeTurn,
-  updateBoard,
-} = boardSlice.actions;
+export const { putWhite, putBlack, play, changeTurn, updateBoard } =
+  boardSlice.actions;
 export default boardSlice.reducer;
