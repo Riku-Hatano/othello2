@@ -6,7 +6,6 @@ const EditBoard = (col: number, row: number, board: any) => {
     newBoard[col][row] = "W";
     return newBoard;
   } else {
-    console.log("done");
     const newBoard = JSON.parse(JSON.stringify(board.board));
     newBoard[col][row] = "B";
     return newBoard;

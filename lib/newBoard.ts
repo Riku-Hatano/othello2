@@ -330,7 +330,6 @@ const newBoard = (col: number, row: number, board: any) => {
   }
   const newSquares = JSON.parse(JSON.stringify(board.board));
   if (board.isWhiteTurn) {
-    console.log("done");
     for (let i = 0; i < changeCell.length; i++) {
       newSquares[changeCell[i][0]][changeCell[i][2]] = "W";
     }

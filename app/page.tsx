@@ -6,12 +6,14 @@ import { Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import theme from "./theme";
 import { useDispatch } from "react-redux";
-import { putWhite, putBlack, play, changeTurn } from "@/redux/boardSlice";
+import { putWhite, putBlack, play, back } from "@/redux/boardSlice";
 
 export default function Home() {
   const board = useSelector((state: any) => state.board);
   const dispacth = useDispatch();
-  console.log(board);
+  const test = () => {
+    console.log(board.boardHistory);
+  };
   return (
     <Grid>
       <Grid
@@ -57,6 +59,8 @@ export default function Home() {
         <ThemeButton onClick={() => dispacth(play())}>
           complete edit
         </ThemeButton>
+        {/* <ThemeButton onClick={test}>back</ThemeButton> */}
+        <ThemeButton onClick={() => dispacth(back())}>back</ThemeButton>
       </Grid>
     </Grid>
   );
