@@ -6,19 +6,25 @@ const HandleChange = (col: number, row: number, board: any): any => {
     case "PLAY":
       if (board.board[col][row] !== " ") {
         return {
-          flag: false,
+          changeTurnFlag: false,
           board: board.board,
         };
       }
       const newVal = newBoard(col, row, board);
       return {
-        flag: newVal.flag,
+        changeTurnFlag: newVal.flag,
         board: newVal.board,
       };
     case "EDIT_WHITE":
-      return EditBoard(col, row, board);
+      return {
+        changeTurnFlag: false,
+        board: EditBoard(col, row, board),
+      };
     case "EDIT_BLACK":
-      return EditBoard(col, row, board);
+      return {
+        changeTurnFlag: false,
+        board: EditBoard(col, row, board),
+      };
     default:
       console.log("illegal mode");
   }

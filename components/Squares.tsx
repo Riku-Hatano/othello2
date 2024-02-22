@@ -3,7 +3,7 @@
 import { Grid } from "@mui/material";
 import HandleChange from "@/lib/handleChange";
 import { useDispatch } from "react-redux";
-import { changeTurn, updateBoard } from "@/redux/boardSlice";
+import { changeTurn, updateBoard, addHistory } from "@/redux/boardSlice";
 
 const cellSize = {
   xs: "30px",
@@ -43,7 +43,8 @@ const TestBaseCell = ({ children, col, row, board }: any) => {
       }}
       onClick={() => {
         dispatch(updateBoard(HandleChange(col, row, board).board));
-        board.mode === "PLAY" && HandleChange(col, row, board).flag
+        dispatch(addHistory(HandleChange(col, row, board).board));
+        board.mode === "PLAY" && HandleChange(col, row, board).changeTurnFlag
           ? dispatch(changeTurn())
           : null;
       }}
