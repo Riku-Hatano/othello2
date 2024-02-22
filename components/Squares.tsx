@@ -44,7 +44,7 @@ const TestBaseCell = ({ children, col, row, board }: any) => {
       onClick={() => {
         dispatch(updateBoard(HandleChange(col, row, board).board));
         dispatch(addHistory(HandleChange(col, row, board).board));
-        board.mode === "PLAY" && HandleChange(col, row, board).flag
+        board.mode === "PLAY" && HandleChange(col, row, board).changeTurnFlag
           ? dispatch(changeTurn())
           : null;
       }}
