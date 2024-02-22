@@ -32,11 +32,24 @@ export const boardSlice = createSlice({
       state.board = action.payload;
     },
     back: (state) => {
-      state.board = state.boardHistory[state.boardHistory.length - 1];
+      if (state.boardHistory.length > 1) {
+        state.boardHistory.pop();
+        state.board = state.boardHistory[state.boardHistory.length - 1];
+      }
+    },
+    addHistory: (state, action) => {
+      state.boardHistory.push(action.payload);
     },
   },
 });
 
-export const { putWhite, putBlack, play, changeTurn, updateBoard, back } =
-  boardSlice.actions;
+export const {
+  putWhite,
+  putBlack,
+  play,
+  changeTurn,
+  updateBoard,
+  back,
+  addHistory,
+} = boardSlice.actions;
 export default boardSlice.reducer;
