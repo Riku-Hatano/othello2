@@ -15,36 +15,35 @@ export default function Home() {
 
   return (
     <Grid>
-      <Grid
-        container
-        spacing={theme.spacing(1)}
-        sx={{ backgroundColor: "khaki", paddingY: "5vh" }}
-      >
-        {/* <Grid spacing={theme.spacing(1)}> */}
-        {board.board.map((col: any, colIdx: any) => {
-          return (
-            <Grid
-              container
-              item
-              sx={{ justifyContent: "center", columnGap: theme.spacing(1) }}
-              key={`${colIdx}`}
-              style={{ backgroundColor: "black" }}
-            >
-              {col.map((row: any, rowIdx: any) => {
-                return (
-                  <TestCell
-                    key={`${rowIdx}-${colIdx}`}
-                    board={board}
-                    row={rowIdx}
-                    col={colIdx}
-                  />
-                );
-              })}
-            </Grid>
-          );
-        })}
-        {/* </Grid> */}
-      </Grid>
+      <BoardFrame sx={{ backgroundColor: "khaki", paddingY: "5vh" }}>
+        <Grid spacing={theme.spacing(1)} container>
+          {board.board.map((col: any, colIdx: any) => {
+            return (
+              <Grid
+                container
+                item
+                sx={{
+                  justifyContent: "flex-start",
+                  columnGap: theme.spacing(1),
+                }}
+                key={`${colIdx}`}
+                style={{ backgroundColor: "black", display: "flex" }}
+              >
+                {col.map((row: any, rowIdx: any) => {
+                  return (
+                    <TestCell
+                      key={`${rowIdx}-${colIdx}`}
+                      board={board}
+                      row={rowIdx}
+                      col={colIdx}
+                    />
+                  );
+                })}
+              </Grid>
+            );
+          })}
+        </Grid>
+      </BoardFrame>
       <Grid>
         <Typography variant="h4">
           next: {board.isWhiteTurn ? "WHITE" : "BLACK"}

@@ -18,7 +18,7 @@ const discSize = {
   lg: "58px",
 };
 
-const TestBaseCell = ({ children, col, row, board }: any) => {
+export const TestBaseCell = ({ children, col, row, board }: any) => {
   const dispatch = useDispatch();
   return (
     <Grid
