@@ -7,20 +7,20 @@ import { useSelector } from "react-redux";
 import theme from "./theme";
 import { useDispatch } from "react-redux";
 import { putWhite, putBlack, play, back } from "@/redux/boardSlice";
+import BoardFrame from "@/components/BoardFrame";
 
 export default function Home() {
   const board = useSelector((state: any) => state.board);
   const dispacth = useDispatch();
-  const test = () => {
-    console.log(board.boardHistory);
-  };
+
   return (
     <Grid>
       <Grid
         container
         spacing={theme.spacing(1)}
-        sx={{ backgroundColor: "black", paddingY: "5vh" }}
+        sx={{ backgroundColor: "khaki", paddingY: "5vh" }}
       >
+        {/* <Grid spacing={theme.spacing(1)}> */}
         {board.board.map((col: any, colIdx: any) => {
           return (
             <Grid
@@ -28,6 +28,7 @@ export default function Home() {
               item
               sx={{ justifyContent: "center", columnGap: theme.spacing(1) }}
               key={`${colIdx}`}
+              style={{ backgroundColor: "black" }}
             >
               {col.map((row: any, rowIdx: any) => {
                 return (
@@ -42,6 +43,7 @@ export default function Home() {
             </Grid>
           );
         })}
+        {/* </Grid> */}
       </Grid>
       <Grid>
         <Typography variant="h4">
@@ -59,7 +61,6 @@ export default function Home() {
         <ThemeButton onClick={() => dispacth(play())}>
           complete edit
         </ThemeButton>
-        {/* <ThemeButton onClick={test}>back</ThemeButton> */}
         <ThemeButton onClick={() => dispacth(back())}>back</ThemeButton>
       </Grid>
     </Grid>
