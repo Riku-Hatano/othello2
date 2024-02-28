@@ -10,18 +10,23 @@ const BoardFrame = ({ children }: any) => {
   return (
     <Grid>
       <Grid
-        container
-        sx={{ display: "flex", columnGap: "1px", backgroundColor: "black" }}
-        spacing={theme.spacing(1)}
+        sx={{
+          display: "flex",
+          columnGap: "1px",
+          backgroundColor: "black",
+        }}
       >
         <React.Fragment>
-          <TestBaseCell />
+          <TestBaseCell bgColor="black" />
           {rowArr.map((item: any) => {
-            return <TestBaseCell key={item}>{item}</TestBaseCell>;
+            return (
+              <TestBaseCell key={item} bgColor="black" color="green">
+                {item}
+              </TestBaseCell>
+            );
           })}
         </React.Fragment>
       </Grid>
-      {/* <Grid> */}
       <Grid sx={{ display: "flex" }}>
         <Grid
           sx={{
@@ -33,7 +38,11 @@ const BoardFrame = ({ children }: any) => {
           }}
         >
           {colArr.map((item: any) => {
-            return <TestBaseCell key={item}>{item}</TestBaseCell>;
+            return (
+              <TestBaseCell key={item} bgColor="black" color="green">
+                {item}
+              </TestBaseCell>
+            );
           })}
         </Grid>
         {children}

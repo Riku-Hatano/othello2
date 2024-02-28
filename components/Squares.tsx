@@ -18,13 +18,21 @@ const discSize = {
   lg: "58px",
 };
 
-export const TestBaseCell = ({ children, col, row, board }: any) => {
+export const TestBaseCell = ({
+  children,
+  col,
+  row,
+  board,
+  bgColor = "green",
+  color,
+}: any) => {
   const dispatch = useDispatch();
   return (
     <Grid
       item
       sx={{
-        backgroundColor: "green",
+        backgroundColor: bgColor,
+        color: color,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

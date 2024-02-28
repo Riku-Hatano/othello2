@@ -16,18 +16,25 @@ export default function Home() {
   return (
     <Grid>
       <BoardFrame sx={{ backgroundColor: "khaki", paddingY: "5vh" }}>
-        <Grid spacing={theme.spacing(1)} container>
+        <Grid
+          container
+          sx={{
+            diaplay: "flex",
+            rowGap: theme.spacing(1),
+            backgroundColor: "black",
+          }}
+        >
           {board.board.map((col: any, colIdx: any) => {
             return (
               <Grid
                 container
-                item
                 sx={{
+                  display: "flex",
                   justifyContent: "flex-start",
                   columnGap: theme.spacing(1),
+                  backgroundColor: "black",
                 }}
                 key={`${colIdx}`}
-                style={{ backgroundColor: "black", display: "flex" }}
               >
                 {col.map((row: any, rowIdx: any) => {
                   return (
