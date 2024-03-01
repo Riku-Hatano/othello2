@@ -13,15 +13,19 @@ const BoardFrame = ({ children }: any) => {
         sx={{
           display: "flex",
           columnGap: "1px",
-          backgroundColor: "green",
-          borderBottom: "1px solid green",
+          backgroundColor: theme.palette.secondary.main,
+          borderBottom: `1px solid ${theme.palette.secondary.main}`,
         }}
       >
         <React.Fragment>
-          <TestBaseCell bgColor="black" />
+          <TestBaseCell bgColor={theme.palette.primary.main} />
           {rowArr.map((item: any) => {
             return (
-              <TestBaseCell key={item} bgColor="black" color="green">
+              <TestBaseCell
+                key={item}
+                bgColor={theme.palette.primary.main}
+                color={theme.palette.secondary.main}
+              >
                 {item}
               </TestBaseCell>
             );
@@ -31,16 +35,20 @@ const BoardFrame = ({ children }: any) => {
       <Grid sx={{ display: "flex" }}>
         <Grid
           sx={{
-            backgroundColor: "green",
+            backgroundColor: theme.palette.secondary.main,
             flexDirection: "column",
-            borderRight: "1px solid green",
+            borderRight: `1px solid ${theme.palette.secondary.main}`,
             display: "flex",
             rowGap: "1px",
           }}
         >
           {colArr.map((item: any) => {
             return (
-              <TestBaseCell key={item} bgColor="black" color="green">
+              <TestBaseCell
+                key={item}
+                bgColor={theme.palette.primary.main}
+                color={theme.palette.secondary.main}
+              >
                 {item}
               </TestBaseCell>
             );
