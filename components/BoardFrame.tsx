@@ -13,7 +13,8 @@ const BoardFrame = ({ children }: any) => {
         sx={{
           display: "flex",
           columnGap: "1px",
-          backgroundColor: "black",
+          backgroundColor: "green",
+          borderBottom: "1px solid green",
         }}
       >
         <React.Fragment>
@@ -30,9 +31,9 @@ const BoardFrame = ({ children }: any) => {
       <Grid sx={{ display: "flex" }}>
         <Grid
           sx={{
-            backgroundColor: "black",
+            backgroundColor: "green",
             flexDirection: "column",
-            justifyContent: "flex-end",
+            borderRight: "1px solid green",
             display: "flex",
             rowGap: "1px",
           }}

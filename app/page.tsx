@@ -15,24 +15,21 @@ export default function Home() {
 
   return (
     <Grid>
-      <BoardFrame sx={{ backgroundColor: "khaki", paddingY: "5vh" }}>
+      <BoardFrame>
         <Grid
-          container
           sx={{
-            diaplay: "flex",
-            rowGap: theme.spacing(1),
+            display: "flex",
+            flexDirection: "column",
+            rowGap: "1px",
             backgroundColor: "black",
           }}
         >
           {board.board.map((col: any, colIdx: any) => {
             return (
               <Grid
-                container
                 sx={{
                   display: "flex",
-                  justifyContent: "flex-start",
-                  columnGap: theme.spacing(1),
-                  backgroundColor: "black",
+                  columnGap: "1px",
                 }}
                 key={`${colIdx}`}
               >
