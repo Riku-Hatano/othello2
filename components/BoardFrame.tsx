@@ -14,6 +14,7 @@ const BoardFrame = ({ children }: any) => {
           display: "flex",
           columnGap: "1px",
           backgroundColor: theme.palette.secondary.main,
+          width: "fit-content",
           borderBottom: `1px solid ${theme.palette.secondary.main}`,
         }}
       >
