@@ -8,6 +8,7 @@ import theme from "./theme";
 import { useDispatch } from "react-redux";
 import { putWhite, putBlack, play, back } from "@/redux/boardSlice";
 import BoardFrame from "@/components/BoardFrame";
+import Score from "@/components/Score";
 
 export default function Home() {
   const board = useSelector((state: any) => state.board);
@@ -15,39 +16,42 @@ export default function Home() {
 
   return (
     <Grid>
-      <BoardFrame>
-        <Grid
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            rowGap: "1px",
-            backgroundColor: "black",
-          }}
-        >
-          {board.board.map((col: any, colIdx: any) => {
-            return (
-              <Grid
-                sx={{
-                  display: "flex",
-                  columnGap: "1px",
-                }}
-                key={`${colIdx}`}
-              >
-                {col.map((row: any, rowIdx: any) => {
-                  return (
-                    <TestCell
-                      key={`${rowIdx}-${colIdx}`}
-                      board={board}
-                      row={rowIdx}
-                      col={colIdx}
-                    />
-                  );
-                })}
-              </Grid>
-            );
-          })}
-        </Grid>
-      </BoardFrame>
+      <Grid sx={{ display: "flex" }}>
+        <BoardFrame>
+          <Grid
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              rowGap: "1px",
+              backgroundColor: "black",
+            }}
+          >
+            {board.board.map((col: any, colIdx: any) => {
+              return (
+                <Grid
+                  sx={{
+                    display: "flex",
+                    columnGap: "1px",
+                  }}
+                  key={`${colIdx}`}
+                >
+                  {col.map((row: any, rowIdx: any) => {
+                    return (
+                      <TestCell
+                        key={`${rowIdx}-${colIdx}`}
+                        board={board}
+                        row={rowIdx}
+                        col={colIdx}
+                      />
+                    );
+                  })}
+                </Grid>
+              );
+            })}
+          </Grid>
+        </BoardFrame>
+        <Score />
+      </Grid>
       <Grid>
         <Typography variant="h4">
           next: {board.isWhiteTurn ? "WHITE" : "BLACK"}
