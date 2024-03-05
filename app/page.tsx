@@ -16,7 +16,15 @@ export default function Home() {
 
   return (
     <Grid>
-      <Grid sx={{ display: "flex" }}>
+      <Grid
+        sx={{
+          display: "flex",
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
+        }}
+      >
         <BoardFrame>
           <Grid
             sx={{

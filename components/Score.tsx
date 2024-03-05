@@ -2,12 +2,21 @@ import { Grid, Typography } from "@mui/material";
 
 const Score = () => {
   return (
-    <Grid sx={{ backgroundColor: "gainsboro", margin: "20px", width: "100%" }}>
-      <Typography variant="h4">alfkja;fkafkladj</Typography>
-      <Typography variant="h4">alfkja;fkafkladj</Typography>
-      <Typography variant="h4">alfkja;fkafkladj</Typography>
-      <Typography variant="h4">alfkja;fkafkladj</Typography>
-      <Typography variant="h4">alfkja;fkafkladj</Typography>
+    <Grid
+      sx={{
+        backgroundColor: "gainsboro",
+        width: "100%",
+        margin: {
+          xs: "20px 40px 0 0",
+          md: "0 20px",
+        },
+      }}
+    >
+      <Typography variant="body1">alfkja;fkafkladj</Typography>
+      <Typography variant="body1">alfkja;fkafkladj</Typography>
+      <Typography variant="body1">alfkja;fkafkladj</Typography>
+      <Typography variant="body1">alfkja;fkafkladj</Typography>
+      <Typography variant="body1">alfkja;fkafkladj</Typography>
     </Grid>
   );
 };
