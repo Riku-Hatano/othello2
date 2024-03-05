@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeButton } from "@/components/Button";
-import { TestCell } from "@/components/Squares";
+import { BaseCell } from "@/components/Squares";
 import { Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import theme from "./theme";
@@ -37,7 +37,7 @@ export default function Home() {
                 >
                   {col.map((row: any, rowIdx: any) => {
                     return (
-                      <TestCell
+                      <BaseCell
                         key={`${rowIdx}-${colIdx}`}
                         board={board}
                         row={rowIdx}

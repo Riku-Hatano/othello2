@@ -18,7 +18,7 @@ const discSize = {
   lg: "58px",
 };
 
-export const TestBaseCell = ({
+export const InnerCell = ({
   children,
   col,
   row,
@@ -61,7 +61,7 @@ export const TestBaseCell = ({
     </Grid>
   );
 };
-const TestDisk = ({ color }: any) => {
+const Piece = ({ color }: any) => {
   return (
     <Grid
       sx={{
@@ -83,13 +83,13 @@ const TestDisk = ({ color }: any) => {
     />
   );
 };
-export const TestCell = ({ board, col, row }: any) => {
+export const BaseCell = ({ board, col, row }: any) => {
   const color = board.board[col][row];
   return color !== " " ? (
-    <TestBaseCell col={col} row={row} board={board}>
-      <TestDisk color={color} />
-    </TestBaseCell>
+    <InnerCell col={col} row={row} board={board}>
+      <Piece color={color} />
+    </InnerCell>
   ) : (
-    <TestBaseCell col={col} row={row} board={board} />
+    <InnerCell col={col} row={row} board={board} />
   );
 };

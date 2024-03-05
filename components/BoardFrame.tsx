@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { TestBaseCell } from "./Squares";
+import { InnerCell } from "./Squares";
 import theme from "@/app/theme";
 import React from "react";
 
@@ -19,16 +19,16 @@ const BoardFrame = ({ children }: any) => {
         }}
       >
         <React.Fragment>
-          <TestBaseCell bgColor={theme.palette.primary.main} />
+          <InnerCell bgColor={theme.palette.primary.main} />
           {rowArr.map((item: any) => {
             return (
-              <TestBaseCell
+              <InnerCell
                 key={item}
                 bgColor={theme.palette.primary.main}
                 color={theme.palette.secondary.main}
               >
                 {item}
-              </TestBaseCell>
+              </InnerCell>
             );
           })}
         </React.Fragment>
@@ -45,13 +45,13 @@ const BoardFrame = ({ children }: any) => {
         >
           {colArr.map((item: any) => {
             return (
-              <TestBaseCell
+              <InnerCell
                 key={item}
                 bgColor={theme.palette.primary.main}
                 color={theme.palette.secondary.main}
               >
                 {item}
-              </TestBaseCell>
+              </InnerCell>
             );
           })}
         </Grid>
