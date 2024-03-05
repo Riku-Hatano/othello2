@@ -11,6 +11,7 @@ export const boardSlice = createSlice({
   initialState: {
     board: initialBoard,
     boardHistory: [initialBoard],
+    scores: [] as string[],
     isWhiteTurn: true,
     amount: 0,
     mode: "PLAY",
@@ -40,6 +41,9 @@ export const boardSlice = createSlice({
     addHistory: (state, action) => {
       state.boardHistory.push(action.payload);
     },
+    addScore: (state, action) => {
+      state.scores.push(action.payload);
+    },
   },
 });
 
@@ -51,5 +55,6 @@ export const {
   updateBoard,
   back,
   addHistory,
+  addScore,
 } = boardSlice.actions;
 export default boardSlice.reducer;

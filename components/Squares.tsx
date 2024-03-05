@@ -3,7 +3,15 @@
 import { Grid } from "@mui/material";
 import HandleChange from "@/lib/handleChange";
 import { useDispatch } from "react-redux";
-import { changeTurn, updateBoard, addHistory } from "@/redux/boardSlice";
+import {
+  changeTurn,
+  updateBoard,
+  addHistory,
+  addScore,
+} from "@/redux/boardSlice";
+
+const colArr = [1, 2, 3, 4, 5, 6, 7, 8];
+const rowArr = ["a", "b", "c", "d", "e", "f", "g", "h"];
 
 const cellSize = {
   xs: "30px",
@@ -50,6 +58,7 @@ export const InnerCell = ({
         },
       }}
       onClick={() => {
+        dispatch(addScore(`${colArr[col]} : ${rowArr[row]}`));
         dispatch(updateBoard(HandleChange(col, row, board).board));
         dispatch(addHistory(HandleChange(col, row, board).board));
         board.mode === "PLAY" && HandleChange(col, row, board).changeTurnFlag
