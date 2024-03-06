@@ -58,7 +58,7 @@ export const InnerCell = ({
         },
       }}
       onClick={() => {
-        dispatch(addScore(`${colArr[col]} : ${rowArr[row]}`));
+        dispatch(addScore(`${colArr[col]}${rowArr[row]}`));
         dispatch(updateBoard(HandleChange(col, row, board).board));
         dispatch(addHistory(HandleChange(col, row, board).board));
         board.mode === "PLAY" && HandleChange(col, row, board).changeTurnFlag
