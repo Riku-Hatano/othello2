@@ -26,6 +26,19 @@ const discSize = {
   lg: "58px",
 };
 
+const clickCellHandler = (
+  dispatch: any,
+  col: any,
+  row: any,
+  board: any
+): void => {
+  dispatch(updateBoard(HandleChange(col, row, board).board));
+  dispatch(addHistory(HandleChange(col, row, board).board));
+  if (board.mode == "PLAY" && HandleChange(col, row, board).changeTurnFlag) {
+    dispatch(changeTurn());
+    dispatch(addScore(`${colArr[col]}${rowArr[row]}`));
+  }
+};
 export const InnerCell = ({
   children,
   col,
@@ -57,14 +70,15 @@ export const InnerCell = ({
           lg: cellSize.lg,
         },
       }}
-      onClick={() => {
-        dispatch(addScore(`${colArr[col]}${rowArr[row]}`));
-        dispatch(updateBoard(HandleChange(col, row, board).board));
-        dispatch(addHistory(HandleChange(col, row, board).board));
-        board.mode === "PLAY" && HandleChange(col, row, board).changeTurnFlag
-          ? dispatch(changeTurn())
-          : null;
-      }}
+      onClick={() => clickCellHandler(dispatch, col, row, board)}
+      // onClick={() => {
+      //   dispatch(addScore(`${colArr[col]}${rowArr[row]}`));
+      //   dispatch(updateBoard(HandleChange(col, row, board).board));
+      //   dispatch(addHistory(HandleChange(col, row, board).board));
+      //   board.mode === "PLAY" && HandleChange(col, row, board).changeTurnFlag
+      //     ? dispatch(changeTurn())
+      //     : null;
+      // }}
     >
       {children}
     </Grid>
