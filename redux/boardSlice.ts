@@ -44,6 +44,9 @@ export const boardSlice = createSlice({
     addScore: (state, action) => {
       state.scores.push(action.payload);
     },
+    removeScore: (state) => {
+      state.scores.pop();
+    },
   },
 });
 
@@ -56,5 +59,6 @@ export const {
   back,
   addHistory,
   addScore,
+  removeScore,
 } = boardSlice.actions;
 export default boardSlice.reducer;

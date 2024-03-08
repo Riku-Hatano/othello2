@@ -6,13 +6,19 @@ import { Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import theme from "./theme";
 import { useDispatch } from "react-redux";
-import { putWhite, putBlack, play, back } from "@/redux/boardSlice";
+import {
+  putWhite,
+  putBlack,
+  play,
+  back,
+  removeScore,
+} from "@/redux/boardSlice";
 import BoardFrame from "@/components/BoardFrame";
 import Score from "@/components/Score";
 
 export default function Home() {
   const board = useSelector((state: any) => state.board);
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
 
   return (
     <Grid>
@@ -67,16 +73,23 @@ export default function Home() {
         <Typography>mode: {board.mode}</Typography>
       </Grid>
       <Grid>
-        <ThemeButton onClick={() => dispacth(putWhite())}>
+        <ThemeButton onClick={() => dispatch(putWhite())}>
           edit white
         </ThemeButton>
-        <ThemeButton onClick={() => dispacth(putBlack())}>
+        <ThemeButton onClick={() => dispatch(putBlack())}>
           edit black
         </ThemeButton>
-        <ThemeButton onClick={() => dispacth(play())}>
+        <ThemeButton onClick={() => dispatch(play())}>
           complete edit
         </ThemeButton>
-        <ThemeButton onClick={() => dispacth(back())}>back</ThemeButton>
+        <ThemeButton
+          onClick={() => {
+            dispatch(back());
+            dispatch(removeScore());
+          }}
+        >
+          back
+        </ThemeButton>
       </Grid>
     </Grid>
   );

@@ -71,14 +71,6 @@ export const InnerCell = ({
         },
       }}
       onClick={() => clickCellHandler(dispatch, col, row, board)}
-      // onClick={() => {
-      //   dispatch(addScore(`${colArr[col]}${rowArr[row]}`));
-      //   dispatch(updateBoard(HandleChange(col, row, board).board));
-      //   dispatch(addHistory(HandleChange(col, row, board).board));
-      //   board.mode === "PLAY" && HandleChange(col, row, board).changeTurnFlag
-      //     ? dispatch(changeTurn())
-      //     : null;
-      // }}
     >
       {children}
     </Grid>
