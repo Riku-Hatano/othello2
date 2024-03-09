@@ -12,6 +12,7 @@ import {
   play,
   back,
   removeScore,
+  changeTurn,
 } from "@/redux/boardSlice";
 import BoardFrame from "@/components/BoardFrame";
 import Score from "@/components/Score";
@@ -85,6 +86,7 @@ export default function Home() {
         <ThemeButton
           onClick={() => {
             dispatch(back());
+            dispatch(changeTurn());
             dispatch(removeScore());
           }}
         >
