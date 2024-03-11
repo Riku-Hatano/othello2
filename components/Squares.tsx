@@ -3,7 +3,15 @@
 import { Grid } from "@mui/material";
 import HandleChange from "@/lib/handleChange";
 import { useDispatch } from "react-redux";
-import { changeTurn, updateBoard, addHistory } from "@/redux/boardSlice";
+import {
+  changeTurn,
+  updateBoard,
+  addHistory,
+  addScore,
+} from "@/redux/boardSlice";
+
+const colArr = [1, 2, 3, 4, 5, 6, 7, 8];
+const rowArr = ["a", "b", "c", "d", "e", "f", "g", "h"];
 
 const cellSize = {
   xs: "30px",
@@ -18,13 +26,34 @@ const discSize = {
   lg: "58px",
 };
 
-const TestBaseCell = ({ children, col, row, board }: any) => {
+const clickCellHandler = (
+  dispatch: any,
+  col: any,
+  row: any,
+  board: any
+): void => {
+  dispatch(updateBoard(HandleChange(col, row, board).board));
+  dispatch(addHistory(HandleChange(col, row, board).board));
+  if (board.mode == "PLAY" && HandleChange(col, row, board).changeTurnFlag) {
+    dispatch(changeTurn());
+    dispatch(addScore(`${colArr[col]}${rowArr[row]}`));
+  }
+};
+export const InnerCell = ({
+  children,
+  col,
+  row,
+  board,
+  bgColor = "green",
+  color,
+}: any) => {
   const dispatch = useDispatch();
   return (
     <Grid
       item
       sx={{
-        backgroundColor: "green",
+        backgroundColor: bgColor,
+        color: color,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -41,19 +70,13 @@ const TestBaseCell = ({ children, col, row, board }: any) => {
           lg: cellSize.lg,
         },
       }}
-      onClick={() => {
-        dispatch(updateBoard(HandleChange(col, row, board).board));
-        dispatch(addHistory(HandleChange(col, row, board).board));
-        board.mode === "PLAY" && HandleChange(col, row, board).changeTurnFlag
-          ? dispatch(changeTurn())
-          : null;
-      }}
+      onClick={() => clickCellHandler(dispatch, col, row, board)}
     >
       {children}
     </Grid>
   );
 };
-const TestDisk = ({ color }: any) => {
+const Piece = ({ color }: any) => {
   return (
     <Grid
       sx={{
@@ -75,13 +98,13 @@ const TestDisk = ({ color }: any) => {
     />
   );
 };
-export const TestCell = ({ board, col, row }: any) => {
+export const BaseCell = ({ board, col, row }: any) => {
   const color = board.board[col][row];
   return color !== " " ? (
-    <TestBaseCell col={col} row={row} board={board}>
-      <TestDisk color={color} />
-    </TestBaseCell>
+    <InnerCell col={col} row={row} board={board}>
+      <Piece color={color} />
+    </InnerCell>
   ) : (
-    <TestBaseCell col={col} row={row} board={board} />
+    <InnerCell col={col} row={row} board={board} />
   );
 };
