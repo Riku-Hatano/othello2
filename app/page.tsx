@@ -16,6 +16,7 @@ import {
 } from "@/redux/boardSlice";
 import BoardFrame from "@/components/BoardFrame";
 import Score from "@/components/Score";
+import TestButton from "@/components/TestButton";
 
 export default function Home() {
   const board = useSelector((state: any) => state.board);
@@ -93,6 +94,7 @@ export default function Home() {
           back
         </ThemeButton>
       </Grid>
+      <TestButton />
     </Grid>
   );
 }
