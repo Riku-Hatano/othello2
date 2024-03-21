@@ -9,6 +9,7 @@ import {
   addHistory,
   addScore,
 } from "@/redux/boardSlice";
+import scoreHandler from "@/lib/score/scoreHandler";
 
 const colArr = [1, 2, 3, 4, 5, 6, 7, 8];
 const rowArr = ["a", "b", "c", "d", "e", "f", "g", "h"];
@@ -37,6 +38,7 @@ const clickCellHandler = (
   if (board.mode == "PLAY" && HandleChange(col, row, board).changeTurnFlag) {
     dispatch(changeTurn());
     dispatch(addScore(`${colArr[col]}${rowArr[row]}`));
+    scoreHandler();
   }
 };
 export const InnerCell = ({
