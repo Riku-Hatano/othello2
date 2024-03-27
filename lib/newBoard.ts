@@ -196,7 +196,7 @@ const newBoard = (col: number, row: number, board: any) => {
     }
     forChangeCell = [];
     //上がひっくり返るか
-    for (let i = row; i > -1; i--) {
+    for (let i = col; i > -1; i--) {
       forChangeCell.push(board.board[i][row]);
     }
     stringed = forChangeCell.join("");
